@@ -30,7 +30,7 @@ title = "IPv6 Parou"
 
 
 title1 = "IPV6Monitor"
-message1 = "O IPV6 Monitor v1.0-dev1 Foi Iniciado!"
+message1 = "O IPV6 Monitor v1.0-dev2 Foi Iniciado!"
 
 title2 = "IPV6Monitor"
 message2 = "Conexão IPv6 Perdida!"
