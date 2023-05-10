@@ -1,6 +1,6 @@
 # this is part of the IPv6Monitor project.
 #
-# Release: v1.0-dev2
+# Release: v1.0-dev3
 #
 # Copyright (c) 2023  Juan Bindez  <juanbindez780@gmail.com>
 #
@@ -25,32 +25,32 @@ import subprocess
 import time
 import notify2
 
-notify2.init("IPv6Monitor")
-title = "IPv6 Parou"
+
+notify2.init("IPvMonitor")
+
+TITLE = "IPvMonitor"
+MESSAGE_INIT = "O IPvMonitor v1.0-dev3 Foi Iniciado!"
+MESSAGE_NOTE = "Esta é uma versão Dev, testa apenas o IPv6 por enquanto!"
+MESSAGE_LOST_IP6 = "Conexão IPv6 Perdida!"
+MESSAGE_RECONNECTION = "Conexão reestabelecida!"
 
 
-title1 = "IPV6Monitor"
-message1 = "O IPV6 Monitor v1.0-dev2 Foi Iniciado!"
+notify2.Notification(TITLE, MESSAGE_INIT).show()
+time.sleep(2)
+notify2.Notification(TITLE, MESSAGE_NOTE).show()
 
-title2 = "IPV6Monitor"
-message2 = "Conexão IPv6 Perdida!"
-
-title3 = "IPV6Monitor"
-message3 = "Conexão reestabelecida!"
-
-notify2.Notification(title1, message1).show()
-
+# IPv6 do Google
 ipv6_address = "2800:3f0:4004:810::200e"
 
 
 def test_dois():
     while True:
-        result = subprocess.run(["ping6", "-c", "1", ipv6_address], stdout=subprocess.DEVNULL)
+        result = subprocess.run(["ping6", "-c", "4", ipv6_address], stdout=subprocess.DEVNULL)
         if result.returncode != 0:
-            notify2.Notification(title2, message2).show()
+            notify2.Notification(TITLE, MESSAGE_LOST_IP6).show()
             pass
         elif result.returncode == 0:
-            notify2.Notification(title3, message3).show()
+            notify2.Notification(TITLE, MESSAGE_RECONNECTION).show()
             break
             pass
             test_dois()
@@ -60,12 +60,11 @@ def test_dois():
 
 def test_init():
     while True:
-        result = subprocess.run(["ping6", "-c", "1", ipv6_address], stdout=subprocess.DEVNULL)
+        result = subprocess.run(["ping6", "-c", "4", ipv6_address], stdout=subprocess.DEVNULL)
         if result.returncode != 0:
-            notify2.Notification(title2, message2).show()
+            notify2.Notification(TITLE, MESSAGE_LOST_IP6).show()
             test_dois()
     
-            
         time.sleep(10)
 
 if __name__ == "__main__":
