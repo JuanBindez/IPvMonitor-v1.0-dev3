@@ -42,7 +42,6 @@ notify2.Notification(TITLE, MESSAGE_NOTE).show()
 # IPv6 do Google
 ipv6_address = "2800:3f0:4004:810::200e"
 
-
 def test_dois():
     while True:
         result = subprocess.run(["ping6", "-c", "4", ipv6_address], stdout=subprocess.DEVNULL)
